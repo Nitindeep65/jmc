@@ -45,7 +45,7 @@ export default function QuickLinks() {
             <div className="h-[2px] w-10 bg-[#FF6600]" />
           </div>
         </div>
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2 sm:gap-3">
           {quickLinks.map((link, idx) => (
             <a
               key={idx}

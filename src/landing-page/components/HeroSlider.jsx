@@ -101,7 +101,7 @@ export default function HeroSlider() {
       </button>
 
       {/* Profile Cards — right side overlay, sliding 2 at a time */}
-      <div className="absolute top-4 right-1 flex gap-4 z-20">
+      <div className="absolute top-4 right-1 hidden lg:flex gap-4 z-20">
         {[officials[profileIdx % officials.length], officials[(profileIdx + 1) % officials.length]].map((person, i) => (
           <div key={`${profileIdx}-${i}`} className="bg-white/95 backdrop-blur-sm rounded shadow-lg p-5 text-center w-64 flex flex-col items-center transition-all duration-700">
             <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-gray-200 mb-3 bg-gray-100">

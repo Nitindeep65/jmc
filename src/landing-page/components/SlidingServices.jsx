@@ -23,10 +23,10 @@ export default function SlidingServices() {
   return (
     <section className="py-10 bg-white border-t-4 border-[#003366]">
       <div className="max-w-[1200px] mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-0 divide-x divide-gray-200">
+        <div className="grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-200">
 
           {/* Col 1: Departments */}
-          <div className="pr-6">
+          <div className="md:pr-6 pb-6 md:pb-0">
             <h2 className="text-xl font-bold text-[#003366] mb-1 pb-2 border-b-2 border-[#FF6600] inline-block">
               Departments
             </h2>
@@ -56,7 +56,7 @@ export default function SlidingServices() {
           </div>
 
           {/* Col 2: Important Links */}
-          <div className="px-6">
+          <div className="md:px-6 py-6 md:py-0">
             <h2 className="text-xl font-bold text-[#003366] mb-1 pb-2 border-b-2 border-[#FF6600] inline-block">
               Important Links
             </h2>
@@ -86,7 +86,7 @@ export default function SlidingServices() {
           </div>
 
           {/* Col 3: City image + about */}
-          <div className="pl-6">
+          <div className="md:pl-6 pt-6 md:pt-0">
             <div className="rounded overflow-hidden border border-gray-200 shadow-sm">
               <div className="relative h-44 overflow-hidden">
                 <img

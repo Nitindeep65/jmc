@@ -101,7 +101,7 @@ export default function TopBar() {
     <div className="bg-[#003366] text-white text-xs border-b border-[#002244] relative z-[60]">
       <div className="max-w-[1200px] mx-auto px-4 flex justify-between items-stretch" style={{ minHeight: '42px' }}>
         {/* Left: skip links */}
-        <div className="flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-3">
           <a href="#main-content" className="hover:underline text-white py-2">Skip to Main Content</a>
           <span className="text-[#FFFFFF33]">|</span>
           <a href="#" className="hover:underline text-white py-2">Screen Reader Access</a>

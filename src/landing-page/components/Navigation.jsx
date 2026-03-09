@@ -70,9 +70,13 @@ const navLinks = [
 
 export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
   const [openDropdown, setOpenDropdown] = useState(null)
+  const [mobileDropdown, setMobileDropdown] = useState(null)
   const location = useLocation()
 
   const isActive = (to) => to && to !== '#' && location.pathname === to.split('#')[0]
+
+  const subLinkClass = 'block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm leading-snug'
+  const mobileSubLinkClass = 'block px-6 py-2.5 text-gray-300 hover:bg-[#FF6600] hover:text-white text-sm leading-snug border-b border-white/10 last:border-0'
 
   return (
     <nav className="bg-[#003366] sticky top-0 z-50 shadow-md" style={{ borderBottom: '3px solid #FF6600' }}>
@@ -81,69 +85,92 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white p-3"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => { setMobileMenuOpen(!mobileMenuOpen); setMobileDropdown(null) }}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d={mobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
             </svg>
           </button>
 
           {/* Navigation Links */}
-          <ul className={`${mobileMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-[#003366] z-50`}>
+          <ul className={`${mobileMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-[#003366] z-50 w-full md:w-auto max-h-[75vh] md:max-h-none overflow-y-auto md:overflow-visible`}>
             {navLinks.map((item, idx) => (
               <li
                 key={idx}
-                className="relative group"
+                className="relative group border-b border-white/10 md:border-0"
                 onMouseEnter={() => setOpenDropdown(idx)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors"
-                  >
-                    {item.name}
-                    {item.hasDropdown && (
-                      <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {/* Item row */}
+                <div className="flex items-stretch">
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors"
+                    >
+                      {item.name}
+                      {item.hasDropdown && (
+                        <svg className="hidden md:inline w-3 h-3 ml-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.to || '/'}
+                      onClick={() => !item.hasDropdown && setMobileMenuOpen(false)}
+                      className={`flex-1 flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors ${isActive(item.to) ? 'bg-[#FF6600]' : ''}`}
+                    >
+                      {item.name}
+                      {item.hasDropdown && (
+                        <svg className="hidden md:inline w-3 h-3 ml-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </Link>
+                  )}
+                  {/* Mobile-only expand button */}
+                  {item.hasDropdown && (
+                    <button
+                      className="md:hidden px-4 text-white hover:bg-[#FF6600] transition-colors border-l border-white/20 flex items-center"
+                      onClick={() => setMobileDropdown(d => d === idx ? null : idx)}
+                      aria-label="Toggle submenu"
+                    >
+                      <svg className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === idx ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
-                    )}
-                  </a>
-                ) : (
-                  <Link
-                    to={item.to || '/'}
-                    className={`flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors ${isActive(item.to) ? 'bg-[#FF6600]' : ''}`}
-                  >
-                    {item.name}
-                    {item.hasDropdown && (
-                    <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                    </button>
                   )}
-                  </Link>
-                )}
+                </div>
+
+                {/* Desktop dropdown (hover, absolute) */}
                 {item.hasDropdown && openDropdown === idx && (
-                  <ul className="absolute left-0 top-full w-[220px] bg-white shadow-lg rounded-b z-50 py-1 border-t-2 border-[#FF6600]">
+                  <ul className="hidden md:block absolute left-0 top-full w-[220px] bg-white shadow-lg rounded-b z-50 py-1 border-t-2 border-[#FF6600]">
                     {item.dropdown.map((sub, subIdx) => (
                       <li key={subIdx} className={subIdx !== 0 ? 'border-t border-gray-100' : ''}>
                         {sub.href ? (
-                          <a
-                            href={sub.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm leading-snug"
-                          >
-                            {sub.name}
-                          </a>
+                          <a href={sub.href} target="_blank" rel="noopener noreferrer" className={subLinkClass}>{sub.name}</a>
                         ) : (
-                          <Link
-                            to={sub.to}
-                            className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm leading-snug"
-                          >
-                            {sub.name}
-                          </Link>
+                          <Link to={sub.to} className={subLinkClass}>{sub.name}</Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Mobile dropdown (click, inline) */}
+                {item.hasDropdown && mobileDropdown === idx && (
+                  <ul className="md:hidden bg-[#002255]">
+                    {item.dropdown.map((sub, subIdx) => (
+                      <li key={subIdx}>
+                        {sub.href ? (
+                          <a href={sub.href} target="_blank" rel="noopener noreferrer" className={mobileSubLinkClass}>{sub.name}</a>
+                        ) : (
+                          <Link to={sub.to} onClick={() => setMobileMenuOpen(false)} className={mobileSubLinkClass}>{sub.name}</Link>
                         )}
                       </li>
                     ))}
