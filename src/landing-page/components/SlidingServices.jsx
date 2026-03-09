@@ -1,101 +1,120 @@
-const slidingOptions = [
-  { name: 'Property Tax', icon: '🏠' },
-  { name: 'Water Supply', icon: '💧' },
-  { name: 'Sanitation', icon: '🧹' },
-  { name: 'Birth Certificate', icon: '📜' },
-  { name: 'Death Certificate', icon: '📄' },
-  { name: 'Building Permission', icon: '🏗️' },
-  { name: 'Grievance Redressal', icon: '📝' },
-  { name: 'Trade License', icon: '📋' },
-  { name: 'Street Lights', icon: '💡' },
-  { name: 'Solid Waste Management', icon: '♻️' }
+const departments = [
+  { name: 'Engineering Department', href: 'https://jmc.jk.gov.in/developwork.aspx' },
+  { name: 'Health Department', href: 'https://jmc.jk.gov.in/swachhgallery.aspx' },
+  { name: 'Revenue & Taxation', href: 'https://jmc.jk.gov.in/online-payment.html' },
+  { name: 'Sanitation Department', href: 'https://jmc.jk.gov.in/swachhgallery.aspx' },
+  { name: 'Urban Planning', href: 'https://jmc.jk.gov.in/smartcity.aspx' },
+  { name: 'Water Supply Division', href: 'https://jmc.jk.gov.in/pddeservices.html' },
+  { name: 'Horticulture Department', href: 'https://jmc.jk.gov.in/easedoing.html' },
 ]
 
-const quickLinks = [
-  { name: 'Jammu Suraksha Yojna', icon: '🏠', href: '#' },
-  { name: 'Now Pay online', icon: '💧', href: '#' },
-  { name: 'Information', icon: '📜', href: '#' },
-  { name: 'Register a complaint', icon: '📝', href: '#' },
-  { name: 'Our Achievements', icon: '📋', href: '#' },
-  { name: 'Quick Links', icon: '📁', href: '#' },
-  { name: 'Feedback', icon: '📁', href: '#' },
-  { name: 'Web Information Manager', icon: '📜', href: '#' },
+const importantLinks = [
+  { name: 'Jammu Suraksha Yojana', href: 'http://www.jammusuraksha.com/' },
+  { name: 'Pay Online', href: 'https://jmc.jk.gov.in/online-payment.html' },
+  { name: 'Register a Complaint', href: 'https://jmc.jk.gov.in/OnlineGrievances.aspx' },
+  { name: "Commissioner's Desk", href: 'https://jmc.jk.gov.in/commissioner.html' },
+  { name: 'Achievements', href: 'https://jmc.jk.gov.in/forms/achievement1.pdf' },
+  { name: 'Quick Links', href: 'https://jmc.jk.gov.in/quick-links.html' },
+  { name: 'Feedback', href: 'https://jmc.jk.gov.in/feedback.aspx' },
+  { name: 'Web Information Manager', href: 'https://jmc.jk.gov.in/webmanager.html' },
 ]
 
 export default function SlidingServices() {
   return (
-    <section className="py-10 bg-gradient-to-r from-[#003366] to-[#004488]">
+    <section className="py-10 bg-white border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-4">
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Quick Links - Left */}
-          <div className="flex-1 bg-white/10 rounded-xl p-6 backdrop-blur">
-            <h2 className="text-2xl font-bold text-white mb-6 border-b-2 border-[#FF6600] pb-3 inline-block">
-              Quick Links
+        <div className="grid md:grid-cols-3 gap-0 divide-x divide-gray-200">
+
+          {/* Col 1: Departments */}
+          <div className="pr-6">
+            <h2 className="text-xl font-bold text-[#003366] mb-1 pb-2 border-b-2 border-[#FF6600] inline-block">
+              Departments
             </h2>
-            <div className="flex gap-8">
-              <ul className="flex flex-col gap-3">
-                {quickLinks.slice(0, 4).map((link, idx) => (
-                  <li key={idx}>
-                    <a
-                      href={link.href}
-                      className="flex items-center gap-4 text-white hover:text-[#FF6600] hover:bg-white/10 rounded-lg px-3 py-2 transition-all"
-                    >
-                      <span className="text-2xl">{link.icon}</span>
-                      <span className="font-medium text-base">{link.name}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <ul className="flex flex-col gap-3">
-                {quickLinks.slice(4).map((link, idx) => (
-                  <li key={idx}>
-                    <a
-                      href={link.href}
-                      className="flex items-center gap-4 text-white hover:text-[#FF6600] hover:bg-white/10 rounded-lg px-3 py-2 transition-all"
-                    >
-                      <span className="text-2xl">{link.icon}</span>
-                      <span className="font-medium text-base">{link.name}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <ul className="mt-4 space-y-1">
+              {departments.map((dept, idx) => (
+                <li key={idx}>
+                  <a
+                    href={dept.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#FF6600] transition-colors py-1.5 border-b border-gray-100"
+                  >
+                    <span className="text-[#FF6600] text-xs">►</span>
+                    {dept.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="https://jmc.jk.gov.in/information.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block border border-[#FF6600] text-[#FF6600] hover:bg-[#FF6600] hover:text-white text-xs px-4 py-1.5 rounded transition-colors"
+            >
+              View All
+            </a>
+          </div>
+
+          {/* Col 2: Important Links */}
+          <div className="px-6">
+            <h2 className="text-xl font-bold text-[#003366] mb-1 pb-2 border-b-2 border-[#FF6600] inline-block">
+              Important Links
+            </h2>
+            <ul className="mt-4 space-y-1">
+              {importantLinks.map((link, idx) => (
+                <li key={idx}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#FF6600] transition-colors py-1.5 border-b border-gray-100"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#FF6600] flex-shrink-0 inline-block"></span>
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="https://jmc.jk.gov.in/quick-links.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block border border-[#FF6600] text-[#FF6600] hover:bg-[#FF6600] hover:text-white text-xs px-4 py-1.5 rounded transition-colors"
+            >
+              View All
+            </a>
+          </div>
+
+          {/* Col 3: City image + about */}
+          <div className="pl-6">
+            <div className="rounded overflow-hidden border border-gray-200 shadow-sm">
+              <div className="relative h-44 overflow-hidden">
+                <img
+                  src="circle/circle.jpeg"
+                  alt="Jammu City"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900'
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#003366]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3">
+                  <p className="text-white font-bold text-sm">Jammu City</p>
+                </div>
+              </div>
+              <div className="p-4 bg-white">
+                <h3 className="font-bold text-[#003366] text-sm mb-2">Welcome to Jammu Municipal Corporation</h3>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  Jammu, the winter capital of J&K Union Territory, is served by JMC for all civic
+                  needs — from sanitation to infrastructure, property services to public health.
+                </p>
+                <a href="https://jmc.jk.gov.in/information.html" target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-xs text-[#FF6600] hover:underline font-semibold">
+                  Know More →
+                </a>
+              </div>
             </div>
           </div>
-          
-          {/* Our Services - Right */}
-          <div className="flex-1 bg-white/10 rounded-xl p-6 backdrop-blur">
-            <h2 className="text-2xl font-bold text-white mb-6 border-b-2 border-[#FF6600] pb-3 inline-block">
-              Our Services
-            </h2>
-            <div className="flex gap-8">
-              <ul className="flex flex-col gap-3">
-                {slidingOptions.slice(0, 5).map((option, idx) => (
-                  <li key={idx}>
-                    <a
-                      href="#"
-                      className="flex items-center gap-4 text-white hover:text-[#FF6600] hover:bg-white/10 rounded-lg px-3 py-2 transition-all"
-                    >
-                      <span className="text-2xl">{option.icon}</span>
-                      <span className="font-medium text-base">{option.name}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <ul className="flex flex-col gap-3">
-                {slidingOptions.slice(5).map((option, idx) => (
-                  <li key={idx}>
-                    <a
-                      href="#"
-                      className="flex items-center gap-4 text-white hover:text-[#FF6600] hover:bg-white/10 rounded-lg px-3 py-2 transition-all"
-                    >
-                      <span className="text-2xl">{option.icon}</span>
-                      <span className="font-medium text-base">{option.name}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>

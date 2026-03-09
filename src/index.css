@@ -72,3 +72,24 @@ body {
 .animate-slideUp {
   animation: slideUp 12s linear infinite;
 }
+
+/* ── Accessibility contrast modes ── */
+body.ac-high-contrast {
+  filter: contrast(150%) brightness(1.1);
+}
+body.ac-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+body.ac-invert img,
+body.ac-invert video {
+  filter: invert(1) hue-rotate(180deg);
+}
+body.ac-saturate {
+  filter: saturate(0);
+}
+body.ac-highlight-links a {
+  background-color: #ffff00 !important;
+  color: #000 !important;
+  text-decoration: underline !important;
+  outline: 1px solid #000 !important;
+}

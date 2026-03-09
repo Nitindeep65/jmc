@@ -7,8 +7,9 @@ import Navigation from './components/Navigation'
 import NewsTicker from './components/NewsTicker'
 import HeroSlider from './components/HeroSlider'
 import InfoCards from './components/InfoCards'
-import SlidingServices from './components/SlidingServices'
+import QuickInfoCards from './components/QuickInfoCards'
 import Destinations from './components/Destinations'
+import SlidingServices from './components/SlidingServices'
 import PartnerLogos from './components/PartnerLogos'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
@@ -22,12 +23,13 @@ export default function LandingPage() {
       <Header />
       <Navigation mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <NewsTicker />
-      
+
       <main id="main-content">
         <HeroSlider />
         <InfoCards />
-        <SlidingServices />
+        <QuickInfoCards />
         <Destinations />
+        <SlidingServices />
         <PartnerLogos />
       </main>
 

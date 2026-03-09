@@ -19,13 +19,17 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Right - Digital India Logo */}
-          <div className="hidden md:flex items-center">
+          {/* Right - Toll Free + Digital India Logo */}
+          <div className="hidden md:flex flex-col items-end gap-2">
+            <div className="text-right">
+              <p className="text-[#003366] text-xs font-semibold">Toll Free: <strong className="text-[#FF6600] text-sm">18001807207</strong></p>
+              <p className="text-gray-500 text-[10px]">10:00 AM – 05:00 PM (Working Days)</p>
+            </div>
             <a href="https://www.digitalindia.gov.in/" target="_blank" rel="noopener noreferrer">
               <img
                 src="/footer/dic.png"
                 alt="Digital India"
-                className="h-[50px] w-auto"
+                className="h-[40px] w-auto"
                 onError={(e) => { e.target.src = 'https://www.digitalindia.gov.in/sites/all/themes/digitalindia/images/logo.png' }}
               />
             </a>

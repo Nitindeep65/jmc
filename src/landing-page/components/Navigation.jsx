@@ -1,36 +1,45 @@
 
 import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const navLinks = [
-  { name: 'Home', href: '#' },
-  { name: 'About JMC', href: '#', hasDropdown: true, dropdown: [
-    { name: 'History', href: '#' },
-    { name: 'Vision & Mission', href: '#' },
-    { name: 'Organizational Structure', href: '#' }
+  { name: 'Home', to: '/' },
+  { name: 'About JMC', to: '/about', hasDropdown: true, dropdown: [
+    { name: 'About JMC', to: '/about' },
+    { name: 'History', to: '/about#history' },
+    { name: 'Vision & Mission', to: '/about#vision' },
+    { name: 'Acts & Rules', to: '/about#acts' }
   ] },
-  { name: 'Governing Bodies', href: '#', hasDropdown: true, dropdown: [
-    { name: 'Mayor', href: '#' },
-    { name: 'Deputy Mayor', href: '#' },
-    { name: 'Corporators', href: '#' }
+  { name: 'Officials', to: '/officials', hasDropdown: true, dropdown: [
+    { name: 'Higher Officials', to: '/officials' },
+    { name: 'JMC Officers', to: '/officials#jmc-officers' },
+    { name: "Commissioner's Desk", to: '/commissioner' }
   ] },
-  { name: 'E-Governance', href: '#', hasDropdown: true, dropdown: [
-    { name: 'Online Services', href: '#' },
-    { name: 'Citizen Charter', href: '#' }
+  { name: 'E-Governance', to: '/egov', hasDropdown: true, dropdown: [
+    { name: 'E-Governance Portal', to: '/egov' },
+    { name: 'Online Services', to: '/services' },
+    { name: 'Online Payment', href: 'https://jmc.jk.gov.in/online-payment.html' },
+    { name: 'PDD E-Services', href: 'https://jmc.jk.gov.in/pddeservices.html' }
   ] },
-  { name: 'Departments', href: '#', hasDropdown: true, dropdown: [
-    { name: 'Health', href: '#' },
-    { name: 'Engineering', href: '#' },
-    { name: 'Revenue', href: '#' }
+  { name: 'Notices', to: '/notices', hasDropdown: true, dropdown: [
+    { name: 'Public Notices', to: '/notices' },
+    { name: 'Tenders', to: '/notices#tenders' },
+    { name: 'Council Updates', to: '/notices#council' }
   ] },
-  { name: 'Orders & Circulars', href: '#' },
-  { name: 'Tenders', href: '#' },
-  { name: 'RTI', href: '#' },
-  { name: 'Contact Us', href: '#' },
-  { name: 'Ex Municipal Councillor', href: '#' }
+  { name: 'Smart City', to: '/smart-city' },
+  { name: 'Dev. Works', to: '/development-works' },
+  { name: 'Gallery', to: '/gallery' },
+  { name: 'Swachh Mission', to: '/swachh-mission' },
+  { name: 'RTI', to: '/rti' },
+  { name: 'Contact Us', to: '/contact' },
 ]
 
 export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
   const [openDropdown, setOpenDropdown] = useState(null)
+  const location = useLocation()
+
+  const isActive = (to) => to && to !== '#' && location.pathname === to.split('#')[0]
+
   return (
     <nav className="bg-[#003366] sticky top-0 z-50">
       <div className="max-w-[1300px] mx-auto px-4">
@@ -54,9 +63,9 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
                 onMouseEnter={() => setOpenDropdown(idx)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                <a
-                  href={item.href}
-                  className="flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors"
+                <Link
+                  to={item.to || '/'}
+                  className={`flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors ${isActive(item.to) ? 'bg-[#FF6600]' : ''}`}
                 >
                   {item.name}
                   {item.hasDropdown && (
@@ -64,17 +73,28 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   )}
-                </a>
+                </Link>
                 {item.hasDropdown && openDropdown === idx && (
                   <ul className="absolute left-0 top-full min-w-[180px] bg-white shadow-lg rounded-b z-50 py-2">
                     {item.dropdown.map((sub, subIdx) => (
                       <li key={subIdx}>
-                        <a
-                          href={sub.href}
-                          className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm whitespace-nowrap"
-                        >
-                          {sub.name}
-                        </a>
+                        {sub.href ? (
+                          <a
+                            href={sub.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm whitespace-nowrap"
+                          >
+                            {sub.name}
+                          </a>
+                        ) : (
+                          <Link
+                            to={sub.to}
+                            className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm whitespace-nowrap"
+                          >
+                            {sub.name}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
