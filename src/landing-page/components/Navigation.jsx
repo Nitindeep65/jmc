@@ -8,30 +8,64 @@ const navLinks = [
     { name: 'About JMC', to: '/about' },
     { name: 'History', to: '/about#history' },
     { name: 'Vision & Mission', to: '/about#vision' },
-    { name: 'Acts & Rules', to: '/about#acts' }
+    { name: 'Acts & Rules', to: '/about#acts' },
+    { name: 'Gallery', to: '/gallery' },
   ] },
-  { name: 'Officials', to: '/officials', hasDropdown: true, dropdown: [
-    { name: 'Higher Officials', to: '/officials' },
-    { name: 'JMC Officers', to: '/officials#jmc-officers' },
-    { name: "Commissioner's Desk", to: '/commissioner' }
+  { name: 'Governing Bodies', to: '/officials', hasDropdown: true, dropdown: [
+    { name: "Hon'ble Mayor", href: 'https://jmc.jk.gov.in/mayor.aspx' },
+    { name: "Hon'ble Deputy Mayor", href: 'https://jmc.jk.gov.in/deputymayor.aspx' },
+    { name: "Hon'ble Chairman Public Health and Sanitation Committee", href: 'https://jmc.jk.gov.in/governingbodies.aspx' },
+    { name: "Hon'ble Chairman Swachh Bharat Committee", href: 'https://jmc.jk.gov.in/governingbodies.aspx' },
+    { name: "Hon'ble Chairman Social Justice Committee", href: 'https://jmc.jk.gov.in/governingbodies.aspx' },
+    { name: 'Commissioner Secretary to Govt. (HUDD)', to: '/officials' },
+    { name: 'Municipal Commissioner, JMC', to: '/commissioner' },
   ] },
   { name: 'E-Governance', to: '/egov', hasDropdown: true, dropdown: [
-    { name: 'E-Governance Portal', to: '/egov' },
-    { name: 'Online Services', to: '/services' },
-    { name: 'Online Payment', href: 'https://jmc.jk.gov.in/online-payment.html' },
-    { name: 'PDD E-Services', href: 'https://jmc.jk.gov.in/pddeservices.html' }
+    { name: 'Doorstep Governance', href: 'https://jmc.jk.gov.in/doorstep.aspx' },
+    { name: 'Online Public Grievance System', href: 'https://jmc.jk.gov.in/OnlineGrievances.aspx' },
+    { name: 'Online Birth/Death Certificate', href: 'https://serviceonline.gov.in/jammu/' },
+    { name: 'Online Building Permission', href: 'https://jmc.jk.gov.in/PermissionForm.aspx' },
+    { name: 'Online Pay Rent of Municipal Shop/Flat', href: 'https://jmc.jk.gov.in/online-payment.html' },
+    { name: 'Online User Charges', href: 'https://jmc.jk.gov.in/online-payment.html' },
+    { name: 'E-Tendering', href: 'https://jktenders.gov.in/' },
+    { name: 'Online NOC/License System', href: 'https://jmc.jk.gov.in/easedoing.html' },
+    { name: 'Apply for Rehri License', href: 'https://jmc.jk.gov.in/easedoing.html' },
+    { name: 'Online Birth/Death Certificate', href: 'https://serviceonline.gov.in/jammu/' },
+    { name: 'PDD E-Services', href: 'https://jmc.jk.gov.in/pddeservices.html' },
   ] },
-  { name: 'Notices', to: '/notices', hasDropdown: true, dropdown: [
+  { name: 'Departments', to: '/about', hasDropdown: true, dropdown: [
+    { name: 'Health & Sanitation', href: 'https://jmc.jk.gov.in/HealthDept.aspx' },
+    { name: 'Enforcement', href: 'https://jmc.jk.gov.in/enforcement.aspx' },
+    { name: 'Establishment', href: 'https://jmc.jk.gov.in/establishment.aspx' },
+    { name: 'Electric', href: 'https://jmc.jk.gov.in/electric.aspx' },
+    { name: 'Civil Works', href: 'https://jmc.jk.gov.in/developwork.aspx' },
+    { name: 'UEED', href: 'https://jmc.jk.gov.in/ueed.aspx' },
+    { name: 'Census', href: 'https://jmc.jk.gov.in/census.aspx' },
+    { name: 'Revenue', href: 'https://jmc.jk.gov.in/taxassessment.aspx' },
+    { name: 'Building', href: 'https://jmc.jk.gov.in/PermissionForm.aspx' },
+    { name: 'Accounts', href: 'https://jmc.jk.gov.in/accounts.aspx' },
+    { name: 'Transport', href: 'https://jmc.jk.gov.in/transport.aspx' },
+    { name: 'Legal', href: 'https://jmc.jk.gov.in/legal.aspx' },
+    { name: 'Veterinary', href: 'https://jmc.jk.gov.in/veterinary.aspx' },
+  ] },
+  { name: 'Orders & Circulars', to: '/notices', hasDropdown: true, dropdown: [
     { name: 'Public Notices', to: '/notices' },
-    { name: 'Tenders', to: '/notices#tenders' },
-    { name: 'Council Updates', to: '/notices#council' }
+    { name: 'Tenders', to: '/notices' },
+    { name: 'Council Updates', to: '/notices' },
+    { name: 'Smart City', to: '/smart-city' },
+    { name: 'Swachh Mission', to: '/swachh-mission' },
+    { name: 'Development Works', to: '/development-works' },
   ] },
-  { name: 'Smart City', to: '/smart-city' },
-  { name: 'Dev. Works', to: '/development-works' },
-  { name: 'Gallery', to: '/gallery' },
-  { name: 'Swachh Mission', to: '/swachh-mission' },
-  { name: 'RTI', to: '/rti' },
+  { name: 'Tenders', href: 'https://jmc.jk.gov.in/tenders.aspx' },
+  { name: 'RTI', to: '/rti', hasDropdown: true, dropdown: [
+    { name: 'Disclosure of information Under Sec 4 of RTI Act.', href: 'https://jmc.jk.gov.in/RTI.aspx' },
+    { name: "Details of APIO's/PIO/FAA of JMC.", to: '/rti' },
+    { name: 'RTI ACT 2005', href: 'https://rtionline.gov.in/' },
+  ] },
   { name: 'Contact Us', to: '/contact' },
+  { name: 'Ex Municipal Councillor', href: 'https://jmc.jk.gov.in/wardcouncillor.aspx', hasDropdown: true, dropdown: [
+    { name: 'Councillor Details', href: 'https://jmc.jk.gov.in/wardcouncillor.aspx' },
+  ] },
 ]
 
 export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
@@ -41,7 +75,7 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
   const isActive = (to) => to && to !== '#' && location.pathname === to.split('#')[0]
 
   return (
-    <nav className="bg-[#003366] sticky top-0 z-50">
+    <nav className="bg-[#003366] sticky top-0 z-50 shadow-md" style={{ borderBottom: '3px solid #FF6600' }}>
       <div className="max-w-[1300px] mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Mobile Menu Button */}
@@ -63,34 +97,50 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
                 onMouseEnter={() => setOpenDropdown(idx)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                <Link
-                  to={item.to || '/'}
-                  className={`flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors ${isActive(item.to) ? 'bg-[#FF6600]' : ''}`}
-                >
-                  {item.name}
-                  {item.hasDropdown && (
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors"
+                  >
+                    {item.name}
+                    {item.hasDropdown && (
+                      <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.to || '/'}
+                    className={`flex items-center px-4 py-3 text-white text-sm font-medium hover:bg-[#FF6600] transition-colors ${isActive(item.to) ? 'bg-[#FF6600]' : ''}`}
+                  >
+                    {item.name}
+                    {item.hasDropdown && (
                     <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   )}
-                </Link>
+                  </Link>
+                )}
                 {item.hasDropdown && openDropdown === idx && (
-                  <ul className="absolute left-0 top-full min-w-[180px] bg-white shadow-lg rounded-b z-50 py-2">
+                  <ul className="absolute left-0 top-full w-[220px] bg-white shadow-lg rounded-b z-50 py-1 border-t-2 border-[#FF6600]">
                     {item.dropdown.map((sub, subIdx) => (
-                      <li key={subIdx}>
+                      <li key={subIdx} className={subIdx !== 0 ? 'border-t border-gray-100' : ''}>
                         {sub.href ? (
                           <a
                             href={sub.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm whitespace-nowrap"
+                            className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm leading-snug"
                           >
                             {sub.name}
                           </a>
                         ) : (
                           <Link
                             to={sub.to}
-                            className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm whitespace-nowrap"
+                            className="block px-4 py-2 text-[#003366] hover:bg-[#FF6600] hover:text-white text-sm leading-snug"
                           >
                             {sub.name}
                           </Link>

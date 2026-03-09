@@ -26,10 +26,10 @@ export default function NewsTicker() {
   }, [paused])
 
   return (
-    <div className="bg-[#0a0a0a] text-white" style={{ borderTop: '3px solid #FF6600' }}>
+    <div className="bg-[#002244] text-white" style={{ borderTop: '3px solid #FF6600', borderBottom: '1px solid #001833' }}>
       <div className="max-w-[1200px] mx-auto px-4 flex items-stretch" style={{ minHeight: '42px' }}>
         {/* Label */}
-        <div className="bg-[#FF6600] text-white px-5 py-0 font-bold text-sm flex items-center flex-shrink-0 mr-4">
+        <div className="bg-[#FF6600] text-white px-5 py-0 font-bold text-sm flex items-center flex-shrink-0 mr-4 uppercase tracking-wider">
           Latest News
         </div>
 

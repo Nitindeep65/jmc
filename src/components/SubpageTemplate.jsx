@@ -4,11 +4,11 @@ import PageLayout from './PageLayout'
 const PAGE_NAV = [
   { name: 'Home', to: '/' },
   { name: 'About JMC', to: '/about' },
-  { name: 'Officials', to: '/officials' },
+  { name: 'Governing Bodies', to: '/officials' },
   { name: "Commissioner's Desk", to: '/commissioner' },
   { name: 'E-Governance', to: '/egov' },
   { name: 'Online Services', to: '/services' },
-  { name: 'Notices', to: '/notices' },
+  { name: 'Orders & Circulars', to: '/notices' },
   { name: 'Smart City', to: '/smart-city' },
   { name: 'Development Works', to: '/development-works' },
   { name: 'Photo Gallery', to: '/gallery' },

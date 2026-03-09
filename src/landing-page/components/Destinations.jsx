@@ -1,12 +1,3 @@
-const photos = [
-  { src: 'circle/circle.jpeg', alt: 'JMC Activity' },
-  { src: 'circle/circle2.jpeg', alt: 'JMC Activity' },
-  { src: 'circle/circle3.jpeg', alt: 'JMC Activity' },
-  { src: 'circle/circle4.jpeg', alt: 'JMC Activity' },
-  { src: 'banner/banner1.jpg', alt: 'JMC Event' },
-  { src: 'banner/banner2.jpg', alt: 'JMC Event' },
-]
-
 const events = [
   {
     image: 'circle/circle.jpeg',
@@ -37,36 +28,39 @@ export default function Destinations() {
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8">
 
-          {/* Photo Gallery */}
+          {/* Location Map */}
           <div>
             <h2 className="text-xl font-bold text-[#003366] mb-1 pb-2 border-b-2 border-[#FF6600] inline-block">
-              Photo Gallery
+              Our Location
             </h2>
-            <div className="grid grid-cols-3 gap-2 mt-4">
-              {photos.map((photo, idx) => (
-                <a
-                  key={idx}
-                  href={photo.src}
-                  className="block overflow-hidden rounded border border-gray-200 hover:opacity-90 transition-opacity"
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-24 object-cover hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      e.target.src = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400'
-                    }}
-                  />
-                </a>
-              ))}
+            <div className="mt-4 rounded overflow-hidden border border-gray-200 shadow-sm">
+              <iframe
+                title="Jammu Municipal Corporation Location"
+                src="https://maps.google.com/maps?q=Jammu+Municipal+Corporation,+Gole+Market,+Jammu,+Jammu+and+Kashmir&output=embed&z=16"
+                width="100%"
+                height="280"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
-            <div className="mt-4">
-              <a
-                href="#"
-                className="border border-[#FF6600] text-[#FF6600] hover:bg-[#FF6600] hover:text-white text-sm px-5 py-2 inline-block transition-colors rounded"
-              >
-                View All Photos
-              </a>
+            <div className="mt-3 bg-white rounded border border-gray-200 px-4 py-3 flex items-start gap-3">
+              <svg className="w-5 h-5 text-[#FF6600] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <div>
+                <p className="text-sm font-semibold text-[#003366]">Jammu Municipal Corporation</p>
+                <p className="text-xs text-gray-500 mt-0.5">Gole Market, Jammu — 180001, J&amp;K (UT)</p>
+                <a
+                  href="https://maps.app.goo.gl/yQKSVBBr1tGtpXY2A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[#FF6600] hover:underline mt-1 inline-block font-medium"
+                >
+                  Get Directions →
+                </a>
+              </div>
             </div>
           </div>
 

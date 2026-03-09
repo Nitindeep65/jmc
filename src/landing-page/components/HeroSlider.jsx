@@ -23,10 +23,21 @@ const slides = [
   },
 ]
 
+const officials = [
+  { title: "Hon'ble Lt. Governor", name: 'Mr. Manoj Sinha', image: '/officials/LG.jpg' },
+  { title: "Hon'ble Chief Minister", name: 'Omar Abdullah', image: '/officials/cm.jpg' },
+  { title: 'Chief Secretary', name: 'Atul Dulloo (IAS)', image: '/officials/cs.jpg' },
+  { title: 'Municipal Commissioner', name: 'Devansh Yadav, IAS', image: '/officials/com.jpg' },
+  { title: "Ms. Mandeep Kaur, (IAS)\
+Commissioner Secretary,  JKHUDD", name: 'Ms. Mandeep Kaur', image: '/officials/comSec.jpg' },
+]
+
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [profileIdx, setProfileIdx] = useState(0)
   const timerRef = useRef(null)
+  const profileTimerRef = useRef(null)
 
   const next = () => setCurrent(c => (c + 1) % slides.length)
   const prev = () => setCurrent(c => (c - 1 + slides.length) % slides.length)
@@ -36,6 +47,13 @@ export default function HeroSlider() {
     if (!paused) timerRef.current = setInterval(next, 5000)
     return () => clearInterval(timerRef.current)
   }, [paused])
+
+  useEffect(() => {
+    profileTimerRef.current = setInterval(() => {
+      setProfileIdx(i => (i + 2) % officials.length)
+    }, 4000)
+    return () => clearInterval(profileTimerRef.current)
+  }, [])  // officials.length is constant, safe to omit
 
   return (
     <section className="relative h-[350px] md:h-[450px] overflow-hidden" aria-roledescription="carousel" aria-label="JMC Home Banner">
@@ -81,6 +99,29 @@ export default function HeroSlider() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
         </svg>
       </button>
+
+      {/* Profile Cards — right side overlay, sliding 2 at a time */}
+      <div className="absolute top-4 right-1 flex gap-4 z-20">
+        {[officials[profileIdx % officials.length], officials[(profileIdx + 1) % officials.length]].map((person, i) => (
+          <div key={`${profileIdx}-${i}`} className="bg-white/95 backdrop-blur-sm rounded shadow-lg p-5 text-center w-64 flex flex-col items-center transition-all duration-700">
+            <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-gray-200 mb-3 bg-gray-100">
+              <img
+                src={person.image}
+                alt={person.name}
+                className="w-full h-full object-cover"
+                onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&size=200&background=cccccc&color=555` }}
+              />
+            </div>
+            <p className="text-[#003366] font-bold text-sm leading-tight">{person.title}</p>
+            <p className="text-gray-500 text-xs mt-1 mb-3">{person.name}</p>
+            <div className="flex gap-3 justify-center">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#003366] hover:text-[#FF6600] text-sm font-bold">f</a>
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="text-[#003366] hover:text-[#FF6600] text-sm font-bold">𝕏</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[#003366] hover:text-[#FF6600] text-sm font-bold">in</a>
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* Bottom controls: dots + pause */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">

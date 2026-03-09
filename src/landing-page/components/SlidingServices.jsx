@@ -21,7 +21,7 @@ const importantLinks = [
 
 export default function SlidingServices() {
   return (
-    <section className="py-10 bg-white border-t border-gray-100">
+    <section className="py-10 bg-white border-t-4 border-[#003366]">
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-0 divide-x divide-gray-200">
 
@@ -37,9 +37,9 @@ export default function SlidingServices() {
                     href={dept.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#FF6600] transition-colors py-1.5 border-b border-gray-100"
+                    className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#003366] hover:font-semibold transition-all py-1.5 border-b border-gray-100 group"
                   >
-                    <span className="text-[#FF6600] text-xs">►</span>
+                    <span className="text-[#FF6600] text-xs group-hover:translate-x-0.5 transition-transform">►</span>
                     {dept.name}
                   </a>
                 </li>
@@ -67,7 +67,7 @@ export default function SlidingServices() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#FF6600] transition-colors py-1.5 border-b border-gray-100"
+                    className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#003366] hover:font-semibold transition-all py-1.5 border-b border-gray-100"
                   >
                     <span className="w-2 h-2 rounded-full bg-[#FF6600] flex-shrink-0 inline-block"></span>
                     {link.name}

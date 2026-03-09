@@ -13,7 +13,7 @@ export default function Commissioner() {
             <div className="bg-white rounded shadow-sm overflow-hidden">
               <div className="h-64 bg-[#003366] overflow-hidden">
                 <img
-                  src="/officials/LG.jpg"
+                  src="/officials/com.jpg"
                   alt="Municipal Commissioner"
                   className="w-full h-full object-cover object-top"
                   onError={(e) => {

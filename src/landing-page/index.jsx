@@ -28,8 +28,8 @@ export default function LandingPage() {
         <HeroSlider />
         <InfoCards />
         <QuickInfoCards />
-        <Destinations />
         <SlidingServices />
+        <Destinations />
         <PartnerLogos />
       </main>
 
